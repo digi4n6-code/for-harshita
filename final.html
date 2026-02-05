@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Harshita ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #1a1a1a, #050505);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Film grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.card {
+  text-align: center;
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+  max-width: 440px;
+  animation: fadeIn 1.4s ease forwards;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  opacity: 0.78;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1.4rem;
+  justify-content: center;
+}
+
+/* Buttons */
+button {
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Heartbeat glow */
+#yes {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  box-shadow: 0 0 20px rgba(255,77,109,0.6);
+}
+
+#yes:hover {
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0%   { box-shadow: 0 0 15px rgba(255,77,109,0.4); transform: scale(1); }
+  25%  { box-shadow: 0 0 35px rgba(255,77,109,0.9); transform: scale(1.08); }
+  50%  { box-shadow: 0 0 20px rgba(255,77,109,0.6); transform: scale(1); }
+  75%  { box-shadow: 0 0 40px rgba(255,77,109,1); transform: scale(1.1); }
+  100% { box-shadow: 0 0 15px rgba(255,77,109,0.4); transform: scale(1); }
+}
+
+#no {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+#final {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh) rotate(0); opacity: 1; }
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MAIN CARD -->
+<div class="card" id="card">
+  <h1>Harshita, before I ask you anything…</h1>
+  <p>
+    I owe you an apology.<br><br>
+    What I did wasn’t right, and I understand if it hurt you.
+    This isn’t an excuse — just accountability.<br><br>
+    You didn’t deserve confusion or silence.<br>
+    I’m genuinely sorry.
+  </p>
+
+  <h1 style="margin-top:1.5rem;">
+    With that said…<br>
+    Will you be my Valentine, Harshita? ❤️
+  </h1>
+
+  <p>No pressure. Just honesty.</p>
+
+  <div class="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+</div>
+
+<!-- FINAL CARD -->
+<div class="card" id="final">
+  <h1>I’m really glad it’s you, Harshita ❤️</h1>
+  <p>February 14 just got better.</p>
+</div>
+
+<!-- Background music -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8b9c9f6b94.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const card = document.getElementById("card");
+const final = document.getElementById("final");
+const music = document.getElementById("bgMusic");
+
+// YES clicked
+yesBtn.addEventListener("click", () => {
+  card.style.display = "none";
+  final.style.display = "block";
+
+  music.volume = 0;
+  music.play();
+  fadeInMusic();
+
+  launchConfetti();
+});
+
+// NO clicked — respectful exit
+noBtn.addEventListener("click", () => {
+  card.innerHTML = `
+    <h1>Thank you for being honest.</h1>
+    <p>I still respect you.</p>
+  `;
+});
+
+// Music fade-in
+function fadeInMusic() {
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 0.6) {
+      vol += 0.02;
+      music.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 120);
+}
+
+// Confetti
+function launchConfetti() {
+  for (let i = 0; i < 120; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.backgroundColor = `hsl(${Math.random()*360},100%,70%)`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 4000);
+  }
+}
+</script>
+
+</body>
+</html>
