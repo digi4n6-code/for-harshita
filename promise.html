@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>No Promises 🤍</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0e111b, #05060a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e8ebff;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 850px;
+      padding: 30px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #9aa4ff;
+      text-shadow: 0 0 14px rgba(154,164,255,0.5);
+    }
+
+    .name {
+      font-size: 3.3rem;
+      margin-top: 10px;
+      color: #d6dcff;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      line-height: 1.9;
+      opacity: 0;
+      animation: reveal 2s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    .truth {
+      margin-top: 25px;
+      font-size: 1.15rem;
+      color: #bfc6ff;
+      line-height: 1.8;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 16px 45px;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #4f5cff, #7a84ff);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(79,92,255,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 45px rgba(79,92,255,1);
+    }
+
+    .final {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.8rem;
+      color: #eef0ff;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes reveal {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>No Promises Day</h1>
+    <div class="name">Harshita</div>
+
+    <div class="message">
+      I won’t make promises today.
+      <br><br>
+      Not because I don’t care —
+      <br>
+      but because I already know how easily promises can fail.
+    </div>
+
+    <div class="truth">
+      I’ve said things I couldn’t fully live up to.  
+      I’ve meant well — and still fallen short.
+
+      <br><br>
+
+      So instead of promising *forever*,  
+      I’m choosing something harder:
+      <br><br>
+      honesty, effort, and showing up when it matters —  
+      without guarantees, without dramatic words.
+    </div>
+
+    <button onclick="accept()">No promises. Just intention.</button>
+
+    <div class="final" id="finalText">
+      If that’s not enough, I’ll accept it.  
+      If it is — I’ll prove it quietly.
+    </div>
+  </div>
+
+  <script>
+    function accept() {
+      document.getElementById("finalText").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
