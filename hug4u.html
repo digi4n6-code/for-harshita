@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Hug Day 🤍</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #ffdde1, #ee9ca7);
+    color: #2b2b2b;
+    overflow: hidden;
+  }
+
+  .card {
+    text-align: center;
+    max-width: 750px;
+    padding: 40px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 1.5s ease forwards;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 1.3rem;
+    line-height: 1.9;
+  }
+
+  button {
+    margin-top: 35px;
+    padding: 14px 40px;
+    border-radius: 40px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background: #ff758c;
+    color: white;
+    box-shadow: 0 0 20px rgba(255,117,140,0.6);
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(255,117,140,1);
+  }
+
+  .hug {
+    display: none;
+    margin-top: 25px;
+    font-size: 1.8rem;
+    animation: fadeIn 1.5s ease forwards;
+  }
+
+  .floating {
+    position: absolute;
+    bottom: -30px;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Hug Day 🤍</h1>
+  <div class="name">Harshita</div>
+
+  <p>
+    Some days don’t need explanations.  
+    They just need warmth.
+    <br><br>
+    So here’s a hug —  
+    not dramatic, not loud —  
+    just steady and real.
+  </p>
+
+  <button onclick="hug()">Send Hug 🤍</button>
+
+  <div class="hug" id="hugText">
+    Consider yourself hugged. Properly. 🫂
+  </div>
+</div>
+
+<script>
+  function hug() {
+    document.getElementById("hugText").style.display = "block";
+  }
+
+  setInterval(() => {
+    const hug = document.createElement("div");
+    hug.className = "floating";
+    hug.innerHTML = "🫂";
+    hug.style.left = Math.random() * 100 + "vw";
+    hug.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(hug);
+    setTimeout(() => hug.remove(), 6000);
+  }, 500);
+</script>
+
+</body>
+</html>
